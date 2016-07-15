@@ -1,0 +1,175 @@
+Week1
+----------------------
+Installing Packages
+	install-->install.packages("rafalib")
+	load-->library(rafalib)
+
+Get to know R syntax, install swirl!
+
+
+SWIRL NOTES####################################
+
+1.BASIC
+
+x<-5+7
+use '<' to assign variables
+
+c(4, 5, 7.3)
+to make a vector, length three
+
+performing an operation on a vector (x-1) performs on each individual vector component
+if performing operation with two vectors of differing lengths, shorter vector is 'recycled' until length matches longer vector
+
+2.WORKSPACE
+
+ls() list objects
+dir() or list.files() lists files
+
+?list.files
+help
+
+args(function)
+arguments		
+
+dir.create("dirname")
+file.creat("filename")
+
+setwd("choosedir")
+
+file.exists("filename")
+
+file.remane("old","new")
+file.copy("orig","copy")
+
+make dir testdir2 with subdir testdir3:
+dir.create(file.path("testdir2","testdir3"),recursive=TRUE)
+
+to delete dir and contents
+unlink("filename",recursive=TRUE)
+
+3. SEQUENCES OF NUMBERS
+
+?':'
+backtick for info on operator
+
+1.5:12 --> 1.5, 2.5 ... 11.5
+
+seq(0,10,by=0.5)
+seq(0,10,length=30)
+
+zeros
+rep(0, times=40)
+
+repeat pattern
+rep(c(0,1,2), times=10)
+
+ten 0, ten1, ten2
+rep(c(0,1,2), each=10)
+
+4. VECTORS
+atomic vector- all same item type
+list- diff types
+
+vector types
+LOGICAL- TRUE, FALSE, NA
+
+x <- c(1,2,3,4)
+y <- x<3
+y = TRUE TRUE FALSE FALSE
+
+==, !=, <=, >=
+
+can ask if either are true (|) both (&) or the oposite !A
+
+paste(my_char, collapse="")
+collapse across vector items
+leaving a psace between parentheses leaves a space between collapsed itema
+
+paste("Hello", "world!", sep=" ")
+
+> paste(1:3, c("X", "Y", "Z"), sep = "")
+[1] "1X" "2Y" "3Z"
+
+5. MISSING VALUES
+
+my_na <- is.na(vector) 
+sum(my_na)
+
+number of NAs (number of TRUEs in my_na)
+
+6. SUBSETTING VECTORS
+
+x[1:10]
+first ten elements of vector x
+
+subsets: logical, char strings, ints (+/-)
+
+x[!is.na(x)]
+^vals of x not NA
+
+x[!is.na(x) & x>0]
+^vals of x not NA AND >0
+
+x[c(3, 5, 7)]
+third, fifth, seventh elements of x
+
+x[c(-2, -10)]
+c[-c(2, 10)] 
+all but 2nd and 10th elements
+
+names(vect2) <- c('foo', 'bar', 'norf')
+vect <- c(foo=11, bar=2, norf=NA)
+name vector components
+
+names(vect) 
+see names
+
+vect["bar"]
+gives named element
+
+7. MATRICES and DATA FRAMES
+dim(vector)  NA
+dim(vector) <- c(4,5)
+	
+> class(my_vector)
+[1] "matrix"
+
+my_matrix(1:20, 4, 5)
+nums 1-20, 4 row, 5 col
+
+identical(x, y)
+TRUE if identical
+
+cbind(patients, patient_data)
+	^implicit ceorcion (int-> string)
+data.frame(patients, my_matrix)
+	^no worries!
+
+
+colnames(my_data) <- name_vector
+
+8. LOGIC
+
+booleans: TRUE, FALSE
+
+TRUE & (TRUE, FALSE...)
+	^operates across whole vector
+	ans= TRUE, FALSE...
+
+TRUE && (TRUE, FALSE...)
+	^operates on first item only
+	ans: TRUE
+
+OR is same (| all, || first)
+
+
+ALL AND OPERATORS EVALUATED BEFORE OR OPERATORS
+
+isTRUE(6>5)
+	^TRUE
+
+xor(5==6, !FALSE)
+	^TRUE
+	^returns true when 1 FALSE, 1 TRUE
+
+
