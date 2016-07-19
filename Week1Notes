@@ -20,6 +20,8 @@ to make a vector, length three
 performing an operation on a vector (x-1) performs on each individual vector component
 if performing operation with two vectors of differing lengths, shorter vector is 'recycled' until length matches longer vector
 
+
+
 2.WORKSPACE
 
 ls() list objects
@@ -47,6 +49,9 @@ dir.create(file.path("testdir2","testdir3"),recursive=TRUE)
 to delete dir and contents
 unlink("filename",recursive=TRUE)
 
+
+
+
 3. SEQUENCES OF NUMBERS
 
 ?':'
@@ -65,6 +70,9 @@ rep(c(0,1,2), times=10)
 
 ten 0, ten1, ten2
 rep(c(0,1,2), each=10)
+
+
+
 
 4. VECTORS
 atomic vector- all same item type
@@ -90,12 +98,18 @@ paste("Hello", "world!", sep=" ")
 > paste(1:3, c("X", "Y", "Z"), sep = "")
 [1] "1X" "2Y" "3Z"
 
+
+
+
 5. MISSING VALUES
 
 my_na <- is.na(vector) 
 sum(my_na)
 
 number of NAs (number of TRUEs in my_na)
+
+
+
 
 6. SUBSETTING VECTORS
 
@@ -127,6 +141,9 @@ see names
 vect["bar"]
 gives named element
 
+
+
+
 7. MATRICES and DATA FRAMES
 dim(vector)  NA
 dim(vector) <- c(4,5)
@@ -147,6 +164,10 @@ data.frame(patients, my_matrix)
 
 
 colnames(my_data) <- name_vector
+
+
+
+
 
 8. LOGIC
 
@@ -171,5 +192,89 @@ isTRUE(6>5)
 xor(5==6, !FALSE)
 	^TRUE
 	^returns true when 1 FALSE, 1 TRUE
+
+which(vector>7)
+	^list all components>7
+
+any(vector>7)
+all(vector>7)
+
+
+
+
+9. FUNCTIONS
+
+mean(c(2, 4, 5))
+
+"everything that exists is an object, everything that happens is a function call"
+
+mean(c(2, 4, 5))
+
+
+type any function name without input arg to see source code
+
+
+make an AVERAGING function:
+
+
+my_mean <- function(my_vecotr){
+
+sum(my_vector) / length(my_vector)
+
+}
+
+
+below: remainder
+unless you enter a divisor, the default is 2
+
+remainder <- function(num, divisor=2) {
+ num %% divisor
+}
+
+args(remainder)
+^shows arguments
+
+^note YOU CAN PASS A FUNCTION AS AN ARGUMENT!
+(ex: evaluate <- function(func, dat){
+  func(dat)
+})
+
+
+evaluate(function(x){x+1},6)
+^use an anonymous function
+
+USING ELLIPSES
+paste(…, sep” “, collapse=NULL)
+
+	*ALL ARGS AFTER . . . MUST BE DEFINED
+
+	*USUALLY PUT ELLIPSES LAST
+
+# simon_says <- function(...){
+#   paste("Simon says:", ...)
+# }
+
+	^works just like paste fun but prepends w/ “Simon says:”
+
+telegram <- function(...){paste("START",...,"STOP")
+  
+}
+
+	^adds START and STOP to beginning and end 
+
+
+mad_libs <- function(...){
+  args <- list(...)
+  place <- args [["place"]]
+  adjective <- args [["adjective"]]
+  noun <- args[["noun"]]
+  
+  paste("News from", place, "today where", adjective, "students took to the streets in protest of the new", noun, "being installed on campus.")
+}
+
+  #use [[]] to unpack named arguments within args
+
+
+can also make your own operator if you really want to…
 
 
